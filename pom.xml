@@ -27,7 +27,7 @@
     </modules>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com/rackerlabs/cloudfeeds-repose-filters.git</connection>
+        <connection>scm:git:https://github.com/kavishkhanna/cloudfeeds-repose-filters.git</connection>
       <tag>HEAD</tag>
   </scm>
 
