@@ -31,8 +31,8 @@ spec:
         - image: uses:jenkins-x/jx3-pipeline-catalog/tasks/git-clone/git-clone.yaml@versionStream
           name: ""
           resources: {}
-        - name: next-version
-          resources: {}
+        #- name: next-version
+        #  resources: {}
         - name: jx-variables
           resources:
             # override requests for the pod here
@@ -45,6 +45,12 @@ spec:
           - name: license-file
             mountPath: /home/jenkins/.mvnrepository/net/sf/saxon/saxon-ee/9.4.0.6/saxon-license.lic
             subPath: "saxon-license.lic"
+          script: |
+            #!/usr/bin/env bash
+            source .jx/variables.sh
+            mvn clean install -P build-rpm
+            git push origin  --tags
+            #mvn -Dtag="feeds-repose-filters-1.6.1" scm:tag
         volumes:
         - name: maven-settings
           secret:

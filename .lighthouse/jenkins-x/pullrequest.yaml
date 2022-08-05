@@ -43,6 +43,12 @@ spec:
           - name: license-file
             mountPath: /home/jenkins/.mvnrepository/net/sf/saxon/saxon-ee/9.4.0.6/saxon-license.lic
             subPath: "saxon-license.lic"
+          # Start copying from below line
+          script: |
+            #!/usr/bin/env bash
+            source .jx/variables.sh
+            mvn clean install
+          # End copying
         volumes:
         - name: maven-settings
           secret:
